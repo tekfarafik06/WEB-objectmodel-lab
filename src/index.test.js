@@ -13,5 +13,4 @@ describe('Sensor model tests', () => {
   });
   /* TODO: Écrire ici la suite de tests pour le modèle objet.*/
   //
-  console.log("qdsf");
 });
