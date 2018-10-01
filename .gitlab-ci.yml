@@ -12,6 +12,7 @@ cache:
     
 test:
   script:
-  - npm run test
+  - npm run test -- --color=false
   tags:
   - WEB-IHM
+  coverage: /All files\s+\|\s+([\d.]+)/
