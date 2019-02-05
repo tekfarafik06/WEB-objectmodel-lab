@@ -1,8 +1,7 @@
-# Object Model Lab [![pipeline status](https://www-apps.univ-lehavre.fr/forge/WEB-IHM/JSObjectModelLab/badges/master/pipeline.svg)](https://www-apps.univ-lehavre.fr/forge/WEB-IHM/JSObjectModelLab/commits/master) [![coverage report](https://www-apps.univ-lehavre.fr/forge/WEB-IHM/JSObjectModelLab/badges/master/coverage.svg)](https://www-apps.univ-lehavre.fr/forge/WEB-IHM/JSObjectModelLab/commits/master)
+# Object Model Lab [![pipeline status](https://www-apps.univ-lehavre.fr/forge/2018-2019-M1/WEB-objectmodel-lab/badges/master/pipeline.svg)](https://www-apps.univ-lehavre.fr/forge/2018-2019-M1/WEB-objectmodel-lab/commits/master) [![coverage report](https://www-apps.univ-lehavre.fr/forge/2018-2019-M1/WEB-objectmodel-lab/badges/master/coverage.svg)](https://www-apps.univ-lehavre.fr/forge/2018-2019-M1/WEB-objectmodel-lab/commits/master)
 
-
-- Année : M2 iWOCS
-- Matière: WEB-IHM
+- Année : M1 IWOCS 2018-2019
+- Matière: WEB
 - TP : n°2
 
 ## Auteur(s)
@@ -11,8 +10,7 @@
 |--|--|--|--|
 | ... | ... | ... | ... |
 
-See <https://pigne.org/teaching/webdev2/lab/ObjectModelLab> for instructions.
-
+See <https://pigne.org/teaching/webdev1/lab/ObjectModelLab> for instructions.
 
 ## Badges
 
