@@ -1,5 +1,3 @@
+export const version = () => '1.0.0';
 
-export const version = () => "1.0.0";
-
-/* TODO : Créer le modèle objet ici */ 
-
+/* TODO : Créer le modèle objet ici */
