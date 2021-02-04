@@ -10,7 +10,7 @@
 |--|--|--|--|
 | ... | ... | ... | ... |
 
-See <https://pigne.org/teaching/webdev1/lab/ObjectModelLab> for instructions.
+See <https://pigne.org/teaching/webdev1/lab/object-model-lab> for instructions.
 
 ## Badges
 
