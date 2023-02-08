@@ -7,8 +7,9 @@
 ## Auteur(s)
 
 |Nom|Prénom|login|email|
-|--|--|--|--|
-| ... | ... | ... | ... |
+***
+| TEKFA | Rafik | tr195603 | rafik.tekfa@etu.univ-lehavre.fr |
+
 
 See <https://pigne.org/teaching/webdev1/lab/object-model-lab> for instructions.
 
