@@ -1,5 +1,6 @@
 import {
   TimeSeries,
+  Datum,
 } from './Data.js';
 describe('Data test', () => {
   describe('TimeSeries test', () => {
@@ -104,4 +105,45 @@ describe('Data test', () => {
       });
     });
   });
+describe('Datum test', () => {
+    let dataObjet = new Datum([23, 23, 22, 21, 23, 23, 23, 25, 25]);
+    let dataObjetVide ;
+    describe('TEST constructeur', () => {
+      test('Test de constructeur avec une valeur', () => {
+        let values = 23;
+        let data = new Datum(values);
+        expect(data.getValue()).toEqual(values);
+      });
+      test('Test de constructeur sans valeur', () => {
+         dataObjetVide = new Datum();
+        expect(dataObjetVide.getValue()).toEqual(0);
+      });
+      test('Test du constructeur avec valeur incorrecte', () => {
+        let values = "23";
+        let data = new Datum(values);
+        expect(data.getValue()).toEqual(0);
+      });
+    });
+    describe('TEST de la methode getValue()', () => {
+      test('Datum: get()', () => {
+        let value = 23;
+        let data = new Datum(23)
+        expect(data.getValue()).toEqual(value);
+        });
+    });
+    describe('TEST de la methode setValue()', () => {
+      test('TEST de la methode setValue() avec une valeur correcte', () => {
+        let value = 24;
+        let data = new Datum(23);
+        data.setValue(value);
+        expect(data.getValue()).toEqual(value);
+      });
+      test('TEST de la methode setValue() avec une valeur incorrecte ', () => {
+        let value = '4';
+        let data = new Datum(23);
+        data.setValue(value);
+        expect(data.getValue()).toEqual(23);
+      });
+    });
   });
+});

@@ -54,3 +54,22 @@ value(index) {
     }
   }
 }
+export class Datum extends Data {
+  #value=0;
+  constructor(value){
+    super();
+    if (typeof value === 'number'){
+      this.#value = value ;
+     }
+}
+
+  setValue(value){
+     if(typeof value === 'number') {
+       this.#value = value;
+     }
+  }
+   getValue(){
+    return this.#value;
+  }
+}
+
