@@ -1,5 +1,6 @@
 import {
-  Sensor
+  Sensor,
+  Temperature
 } from './Sensor.js';
 
 import {
@@ -108,4 +109,75 @@ describe('Sensor Tests', () => {
     });
   });
 });
+describe('Temperature', () => {
+  describe('constructor', () => {
+    test('should create a temperature sensor object with the correct values when provided', () => {
+      const temperatureData = new Datum(20);
+      const temperatureSensor = new Temperature('1', 'sensor 1', 'TEMPERATURE', temperatureData, 'C');
+      expect(temperatureSensor.getId()).toEqual('1');
+      expect(temperatureSensor.getName()).toEqual('sensor 1');
+      expect(temperatureSensor.getData()).toEqual(temperatureData);
+      expect(temperatureSensor.getUniteMesure()).toEqual('C');
+    });
+
+    test('should create a temperature sensor object with default values when not provided', () => {
+      const temperatureSensor = new Temperature();
+      expect(temperatureSensor.getId()).toEqual('');
+      expect(temperatureSensor.getName()).toEqual('');
+      expect(temperatureSensor.getData()).toEqual(null);
+      expect(temperatureSensor.getUniteMesure()).toEqual('C');
+    });
+
+    test('should create a temperature sensor object with default unit when an invalid unit is provided', () => {
+      const temperatureData = new Datum(20);
+      const temperatureSensor = new Temperature('1', 'sensor 1', 'TEMPERATURE', temperatureData, 'invalidUnit');
+      expect(temperatureSensor.getId()).toEqual('1');
+      expect(temperatureSensor.getName()).toEqual('sensor 1');
+      expect(temperatureSensor.getData()).toEqual(temperatureData);
+      expect(temperatureSensor.getUniteMesure()).toEqual('C');
+    });
+  });
+
+  describe('setUniteMesure', () => {
+    test('should set the unit of measurement to the correct value when provided', () => {
+      const temperatureSensor = new Temperature('1', 'sensor 1', 'TEMPERATURE', new Datum(20), 'C');
+      temperatureSensor.setUniteMesure('F');
+      expect(temperatureSensor.getUniteMesure()).toEqual('F');
+    });
+
+    test('should not set the unit of measurement when an invalid unit is provided', () => {
+      const temperatureSensor = new Temperature('1', 'sensor 1', 'TEMPERATURE', new Datum(20), 'C');
+      temperatureSensor.setUniteMesure('invalidUnit');
+      expect(temperatureSensor.getUniteMesure()).toEqual('C');
+    });
+  });
+
+  describe('convertisseurC', () => {
+    test('should convert the temperature from Fahrenheit to Celsius when the unit is Fahrenheit', () => {
+      const temperatureData = new Datum(68);
+      const temperatureSensor = new Temperature('1', 'sensor 1', 'TEMPERATURE', temperatureData, 'F');
+      expect(temperatureSensor.convertisseurC()).toBeCloseTo(20, 2);
+    });
+
+    test('should return the temperature value in Celsius when the unit is Celsius', () => {
+      const temperatureData = new Datum(20);
+      const temperatureSensor = new Temperature('1', 'sensor 1', 'TEMPERATURE', temperatureData, 'C');
+      expect(temperatureSensor.convertisseurC()).toEqual(20);
+    });
+  });
+
+  describe('convertisseurF', () => {
+    test('should return the temperature value in Fahrenheit when the unit is Fahrenheit', () => {
+      const temperatureData = new Datum(68);
+      const temperatureSensor = new Temperature('1','sensor 1', 'TEMPERATURE', temperatureData, 'F');
+      expect(temperatureSensor.convertisseurF()).toEqual(68);
+      });
+      test('should convert the temperature from Celsius to Fahrenheit when the unit is Celsius', () => {
+        const temperatureData = new Datum(20);
+        const temperatureSensor = new Temperature('1', 'sensor 1', 'TEMPERATURE', temperatureData, 'C');
+        expect(temperatureSensor.convertisseurF()).toBeCloseTo(68, 2);
+      });
+  });
+});
+
 

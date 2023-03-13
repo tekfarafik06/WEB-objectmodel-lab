@@ -65,4 +65,73 @@ export class Sensor{
       return "";
   }
 }
+export class Temperature extends Sensor {
+  #uniteMesure;
 
+  static UniteTemperatureType = [
+    'c','C','Celsius','celsius','CELSIUS',
+    'F','f','Fahrenheit','fahrenheit','FAHRENHEIT'
+  ];
+
+  constructor(id,name,type,data,unite){
+    super(id, name, 'TEMPERATURE', data || new TimeSeries());
+    if (Temperature.UniteTemperatureType.includes(unite)){
+      this.#uniteMesure=unite;
+    }else {
+      this.#uniteMesure='C';
+    }
+  }
+  getUniteMesure(){
+    return this.#uniteMesure;
+  }
+
+  setUniteMesure(unite){
+    if(typeof unite === "string" && Temperature.UniteTemperatureType.includes(unite)){
+      this.#uniteMesure=unite;
+    }
+  }
+
+  convertisseurC(){
+    let resultat = 0;
+    let unite = this.getUniteMesure();
+    if (this.getId() !== "" && this.getName() !== "" && this.getData() !== null) {
+      if (unite == "c" || unite == "C" || unite == "Celsius" || unite == "celsius" || unite == "CELSIUS") {
+        unite = "c";
+      }
+      if (unite == "F" || unite == "f" || unite == "Fahrenheit" || unite == "fahrenheit" || unite == "FAHRENHEIT") {
+        unite = "f";
+      }
+      switch (unite) {
+        case "c":
+          resultat = this.getData().getValue();
+          break;
+        case "f":
+          resultat = (this.getData().getValue() - 32) * (5 / 9);
+          break;
+      }
+    }
+    return resultat ;
+  }
+
+  convertisseurF(){
+    let resultat = 0;
+    let unite = this.getUniteMesure();
+    if (this.getId() !== "" && this.getName() !== "" && this.getData() !== null) {
+      if (unite == "c" || unite == "C" || unite == "Celsius" || unite == "celsius" || unite == "CELSIUS") {
+        unite = "c";
+      }
+      if (unite == "F" || unite == "f" || unite == "Fahrenheit" || unite == "fahrenheit" || unite == "FAHRENHEIT") {
+        unite = "f";
+      }
+      switch (unite) {
+        case "c":
+          resultat = (this.getData().getValue() * (9 / 5)) + 32;
+          break;
+        case "f":
+          resultat = this.getData().getValue();
+          break;
+      }
+    }
+    return resultat ;
+  }
+  }
