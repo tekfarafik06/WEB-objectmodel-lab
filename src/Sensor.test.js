@@ -228,8 +228,9 @@ describe('Sensor Humidity', () => {
     test('Test avec une valeur de data égale ou supérieure à 65', () => {
       let humidityData = new Datum(100);
       let humiditySensor = new Humidity('1', 'humiditySensor', humidityData);
-      expect(humiditySensor.natureUmidity()).toEqual("humide");
+      expect(humiditySensor.natureHumidity()).toEqual("humide");
     });
   });
 });
+
 
