@@ -135,3 +135,52 @@ export class Temperature extends Sensor {
     return resultat ;
   }
   }
+
+// Déclaration de la classe Humidity qui hérite de Sensor
+export class Humidity extends Sensor {
+
+  // Déclaration d'un champ privé pour stocker la nature de l'humidité
+  #natureHumidity ;
+
+  // Constructeur de la classe Humidity
+  constructor(id,name,data){
+    // Appel au constructeur de la classe parente Sensor
+    super(id,name,'HUMIDITY',data);
+    // Initialisation du champ privé #natureHumidity
+    this.#natureHumidity ="";
+  }
+
+  // Méthode qui calcule et retourne la nature de l'humidité en fonction de la valeur du capteur
+  natureHumidity(){
+    // Vérification que les données du capteur ne sont pas nulles
+    if(this.getData()!== null){
+      // Récupération de la valeur du capteur
+      let variable =this.getData().getValue();
+      // Initialisation d'une variable pour stocker la nature de l'humidité
+      let valeur="";
+      // Calcul de la nature de l'humidité en fonction de la valeur du capteur
+      if(variable<35){
+       valeur="sec";
+      }else if(variable >= 35 && variable < 65){
+        valeur="moyHumide";
+      }else{
+        valeur="humide";
+      }
+      // Affectation de la nature de l'humidité en fonction de la valeur calculée
+      switch (valeur) {
+        case "sec":
+          this.#natureHumidity = "sec";
+          break;
+        case "moyHumide":
+          this.#natureHumidity = "moyennement humide";
+          break;
+        case "humide":
+          this.#natureHumidity = "humide";
+          break;
+      }
+    }
+    // Retourne la nature de l'humidité
+    return this.#natureHumidity;
+  }
+}
+

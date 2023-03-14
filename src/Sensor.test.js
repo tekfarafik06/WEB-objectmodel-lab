@@ -1,6 +1,7 @@
 import {
   Sensor,
-  Temperature
+  Temperature,
+  Humidity
 } from './Sensor.js';
 
 import {
@@ -179,5 +180,56 @@ describe('Temperature', () => {
       });
   });
 });
+describe('Sensor Humidity', () => {
+  describe('Constructeur et getters', () => {
+    test('Création d\'un objet Humidity avec des données', () => {
+      let humidityData = new Datum(33);
+      let humiditySensor = new Humidity('4', 'humiditySensor', humidityData);
+      expect(humiditySensor.getId()).toEqual('4');
+      expect(humiditySensor.getName()).toEqual('humiditySensor');
+      expect(humiditySensor.getData()).toEqual(humidityData);
+      expect(humiditySensor.getData().getValue()).toEqual(humidityData.getValue());
+    });
 
+    test('Création d\'un objet Humidity sans données', () => {
+      let humiditySensor = new Humidity();
+      expect(humiditySensor.getId()).toEqual('');
+      expect(humiditySensor.getName()).toEqual('');
+      expect(humiditySensor.getData()).toEqual(null);
+    });
+
+    test('Création d\'un objet Humidity avec des données incorrectes', () => {
+      let humidityData = new Datum(33);
+      let humiditySensor = new Humidity(25, 15, humidityData);
+      expect(humiditySensor.getId()).toEqual('');
+      expect(humiditySensor.getName()).toEqual('');
+      expect(humiditySensor.getData()).toEqual(null);
+    });
+  });
+
+  describe('Test de la méthode natureHumidity()', () => {
+    test('Test avec une valeur de data inferieure à 35', () => {
+      let humidityData = new Datum(15);
+      let humiditySensor = new Humidity('1', 'humiditySensor', humidityData);
+      expect(humiditySensor.natureHumidity()).toEqual("sec");
+    });
+
+    test('Test avec une valeur de data nulle', () => {
+      let humiditySensor = new Humidity();
+      expect(humiditySensor.natureHumidity()).toEqual("");
+    });
+
+    test('Test avec une valeur de data entre 35 et 64', () => {
+      let humidityData = new Datum(55);
+      let humiditySensor = new Humidity('1', 'humiditySensor', humidityData);
+      expect(humiditySensor.natureHumidity()).toEqual("moyennement humide");
+    });
+
+    test('Test avec une valeur de data égale ou supérieure à 65', () => {
+      let humidityData = new Datum(100);
+      let humiditySensor = new Humidity('1', 'humiditySensor', humidityData);
+      expect(humiditySensor.natureUmidity()).toEqual("humide");
+    });
+  });
+});
 
